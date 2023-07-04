@@ -1,0 +1,36 @@
+<h1>Генератор звітів</h1>
+
+<%= form_tag(reports_index_path, method: :get) do %>
+  <div>
+    <label>Початкова дата:</label>
+    <%= date_field_tag :start_date %>
+  </div>
+
+  <div>
+    <label>Кінцева дата:&emsp;&nbsp;</label>
+    <%= date_field_tag :end_date %>
+  </div>
+
+  <div>
+    <%= submit_tag "Звіт за датами", name: "report_type", value: "За датою", class: "btn btn-outline-primary", onclick: "redirectToReport('report_by_date')" %>
+    <%= submit_tag "Звіт за категоріями", name: "report_type", value: "За категоріями", class: "btn btn-outline-primary", onclick: "redirectToReport('report_by_category')" %>
+    <%= submit_tag "Очищення", name: "clear_button", value: "Очистити", class: "btn btn-outline-danger", onclick: "redirectToReportsIndex()" %>
+  </div>
+
+<% end %>
+
+<script>
+ function redirectToReport(reportType) {
+  let startDate = document.getElementById('start_date').value;
+  let endDate = document.getElementById('end_date').value;
+  let url = `http://0.0.0.0:3000/${reportType}?startDate=${startDate}&endDate=${endDate}`;
+  window.location.href = url;
+ }
+
+ function redirectToReportsIndex() {
+  window.location.href = "http://0.0.0.0:3000/reports/index";
+ }
+</script>
+
+<! -- Можна було би винести джаву у окремий файл та просто підключити його. Або, що напевно краще,  -->
+<! --скористатися form_for, але я мав обмаль часу, тому маємо, що маємо(-->

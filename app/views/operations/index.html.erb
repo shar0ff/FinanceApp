@@ -1,0 +1,49 @@
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: #dddddd;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    th, td {
+        border: 1px solid #000000;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .add-operation-button {
+        margin-top: 20px;
+    }
+</style>
+
+<h1>Список операцій</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Категорія</th>
+    <th>Сума</th>
+    <th>Дата</th>
+    <th>Дії</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @operations.each do |operation| %>
+    <tr>
+      <td><%= operation.category.name %></td>
+      <td><%= operation.amount %></td>
+      <td><%= operation.odate %></td>
+      <td>
+        <%= link_to 'Редагувати', edit_operation_path(operation) %>
+        <%= link_to 'Видалити', operation_path(operation), method: :delete, data: { confirm: 'Ви впевнені?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Додати операцію', new_operation_path, class: 'btn btn-primary add-operation-button' %>

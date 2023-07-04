@@ -1,0 +1,79 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h1 id="reportTitle">Report by category</h1>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<style>
+    #categoryTable {
+        background-color: #f2f2f2;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #categoryTable th, #categoryTable td {
+        border: 1px solid #000;
+        padding: 8px;
+    }
+
+    #categoryTable th {
+        font-weight: bold;
+    }
+</style>
+
+<table id="categoryTable">
+  <thead>
+  <tr>
+    <th>Категорія</th>
+    <th>Сума витрат</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @amount_by_c.each_with_index do |amount, index| %>
+    <tr>
+      <td><%= @categories_by_c[index] %></td>
+      <td><%= amount %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    const data = {
+        labels: <%= raw @categories_by_c.to_json.html_safe %>,
+        datasets: [{
+            label: 'Report by categories',
+            data: <%= @amount_by_c.to_json.html_safe %>,
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(255, 87, 51)',
+                'rgb(124, 252, 0)',
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            responsive: false
+        }
+    };
+
+    const myChart = new Chart(ctx, config);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const startDate = urlParams.get('startDate');
+    const endDate = urlParams.get('endDate');
+
+
+    document.title = `Report by category (${startDate} - ${endDate})`;
+
+    document.getElementById('reportTitle').innerHTML = `Report by category (${startDate} - ${endDate})`;
+</script>

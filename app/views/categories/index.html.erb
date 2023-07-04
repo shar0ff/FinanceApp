@@ -1,0 +1,46 @@
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: #dddddd;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    th, td {
+        border: 1px solid #000000; /* Додано чорний контур */
+        padding: 8px;
+        text-align: left;
+    }
+</style>
+
+<h1>Список категорій витрат</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Назва</th>
+    <th>Опис</th>
+    <th>Дії</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <td><%= category.description %></td>
+      <td>
+        <%= link_to 'Редагувати', edit_category_path(category) %>
+        <%= link_to 'Видалити', category_path(category), method: :delete, data: { confirm: 'Ви впевнені?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<! -- NoMethodError виникає під час створення пагінації. -->
+<! -- kaminari gem встановлено, але paginates_per не знаходить -->
+
+<%= link_to 'Додати категорію', new_category_path, class: 'btn btn-outline-primary add-category-button' %>
