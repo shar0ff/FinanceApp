@@ -21,11 +21,17 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-gem "kaminari"
+#faker for filling in databases
+gem 'faker'
 
-gem 'faker', '~> 3.2'
+#pry for debugging (binding.pry)
+gem 'pry'
 
+#kaminari for pagination
+gem 'kaminari'
 
+#sqlite3 database
+gem "sqlite3", "~> 1.4"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -66,7 +72,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   #  # Use sqlite3 as the database for Active Record
-  #   gem "sqlite3", "~> 1.4"
 end
 
 group :test do

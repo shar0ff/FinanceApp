@@ -27,6 +27,6 @@ production:
    host: ec2-3-208-74-199.compute-1.amazonaws.com
    pool: 5
    username: kncquwaqjnusfl
-   password: eb999e7188914ee0f4fcc50398604d39aec466365aaa187cd20261d8c7546906
+   password: <%= ENV['DATABASE_PASSWORD'] %>
 
 

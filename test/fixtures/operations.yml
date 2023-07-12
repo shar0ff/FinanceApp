@@ -3,11 +3,41 @@
 one:
   amount: 9.99
   odate: 2023-06-22 18:23:24
-  description: MyString
+  description: description_1
   category: one
 
 two:
-  amount: 9.99
-  odate: 2023-06-22 18:23:24
-  description: MyString
+  amount: 10.90
+  odate: 2023-06-23 18:30:24
+  description: description_2
   category: two
+
+three:
+  amount: 14.88
+  odate: 2023-06-24 18:25:24
+  description: description_3
+  category: three
+
+four:
+  amount: 12.77
+  odate: 2023-06-25 18:23:20
+  description: description_4
+  category: four
+
+five:
+  amount: 8.96
+  odate: 2023-06-22 18:13:24
+  description: description_5
+  category: five
+
+six:
+  amount: 22.98
+  odate: 2023-06-23 18:53:24
+  description: description_6
+  category: six
+
+seven:
+  amount: 45.97
+  odate: 2023-06-23 18:57:26
+  description: description_7
+  category: seven

@@ -33,14 +33,13 @@
       <td><%= category.description %></td>
       <td>
         <%= link_to 'Редагувати', edit_category_path(category) %>
-        <%= link_to 'Видалити', category_path(category), method: :delete, data: { confirm: 'Ви впевнені?' } %>
+        <%= link_to 'Видалити', operation_path(category), method: :delete, data: { confirm: 'Ви впевнені?', turbo_confirm: 'no' } %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<! -- NoMethodError виникає під час створення пагінації. -->
-<! -- kaminari gem встановлено, але paginates_per не знаходить -->
+<div><%= link_to 'Додати категорію', new_category_path, class: 'btn btn-outline-primary add-category-button' %></div>
 
-<%= link_to 'Додати категорію', new_category_path, class: 'btn btn-outline-primary add-category-button' %>
+<div><%= paginate @categories %></div>

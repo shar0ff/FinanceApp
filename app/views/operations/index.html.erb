@@ -39,11 +39,13 @@
       <td><%= operation.odate %></td>
       <td>
         <%= link_to 'Редагувати', edit_operation_path(operation) %>
-        <%= link_to 'Видалити', operation_path(operation), method: :delete, data: { confirm: 'Ви впевнені?' } %>
+        <%= link_to 'Видалити', operation_path(operation), method: :delete, data: { confirm: 'Ви впевнені?', turbo_confirm: 'no' } %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Додати операцію', new_operation_path, class: 'btn btn-primary add-operation-button' %>
+<div><%= link_to 'Додати операцію', new_operation_path, class: 'btn btn-primary add-operation-button' %></div>
+
+<div><%= paginate @operations %></div>

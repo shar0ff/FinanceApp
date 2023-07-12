@@ -1,18 +1,29 @@
-require "test_helper"
+require 'test_helper'
 
-class ReportsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get reports_index_url
+class ReportsControllerTest < ActionController::TestCase
+  def setup
+    @start_date = '2022-01-01'
+    @end_date = '2023-01-31'
+  end
+
+  test 'should get index' do
+    get :index
     assert_response :success
   end
 
-  test "should get report_by_category" do
-    get reports_report_by_category_url
+  test 'should get report by category' do
+    get :report_by_category, params: { startDate: @start_date, endDate: @end_date }
     assert_response :success
+
+    assert_not_nil assigns(:categories_by_c)
+    assert_not_nil assigns(:amount_by_c)
   end
 
-  test "should get report_by_dates" do
-    get reports_report_by_dates_url
+  test 'should get report by dates' do
+    get :report_by_dates, params: { startDate: @start_date, endDate: @end_date }
     assert_response :success
+
+    assert_not_nil assigns(:dates_by_d)
+    assert_not_nil assigns(:amounts_by_d)
   end
 end

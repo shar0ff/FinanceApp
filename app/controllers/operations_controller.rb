@@ -3,7 +3,7 @@ class OperationsController < ApplicationController
 
   # GET /operations or /operations.json
   def index
-    @operations = Operation.all
+    @operations = Operation.page(params[:page])
   end
 
   # GET /operations/1 or /operations/1.json
@@ -18,6 +18,7 @@ class OperationsController < ApplicationController
 
   # GET /operations/1/edit
   def edit
+    @categories = Category.all.map {|c| [c.name, c.id]}
   end
 
   # POST /operations or /operations.json

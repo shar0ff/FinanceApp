@@ -1,6 +1,10 @@
 require "test_helper"
+require 'pry'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
+
+  fixtures :categories
+
   setup do
     @category = categories(:one)
   end
@@ -16,8 +20,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create category" do
-    assert_difference("Category.count") do
-      post categories_url, params: { category: { description: @category.description, name: @category.name } }
+
+    assert_difference('Category.count', 1) do
+      post categories_url, params: { category: { name: "dd", description: "dd"} }
     end
 
     assert_redirected_to category_url(Category.last)
@@ -45,4 +50,5 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to categories_url
   end
+
 end
