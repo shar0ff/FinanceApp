@@ -20,17 +20,14 @@
 <% end %>
 
 <script>
- function redirectToReport(reportType) {
-  let startDate = document.getElementById('start_date').value;
-  let endDate = document.getElementById('end_date').value;
-  let url = `http://0.0.0.0:3000/${reportType}?startDate=${startDate}&endDate=${endDate}`;
-  window.location.href = url;
- }
+    function redirectToReport(reportType) {
+        let startDate = document.getElementById('start_date').value;
+        let endDate = document.getElementById('end_date').value;
+        let url = `./${reportType}?startDate=${startDate}&endDate=${endDate}`;
+        window.location.href = url;
+    }
 
- function redirectToReportsIndex() {
-  window.location.href = "http://0.0.0.0:3000/reports/index";
- }
+    function redirectToReportsIndex() {
+        window.location.href = "./reports/index";
+    }
 </script>
-
-<! -- Можна було би винести джаву у окремий файл та просто підключити його. Або, що напевно краще,  -->
-<! --скористатися form_for, але я мав обмаль часу, тому маємо, що маємо(-->
