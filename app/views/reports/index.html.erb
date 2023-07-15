@@ -20,15 +20,16 @@
 <% end %>
 
 <script>
- function redirectToReport(reportType) {
-  let startDate = document.getElementById('start_date').value;
-  let endDate = document.getElementById('end_date').value;
-  let url = `./${reportType}?startDate=${startDate}&endDate=${endDate}`;
-  window.location.href = url;
- }
+    function redirectToReport(reportType) {
+        let startDate = document.getElementById('start_date').value;
+        let endDate = document.getElementById('end_date').value;
+        let url = `/${reportType}?startDate=${startDate}&endDate=${endDate}`;
+        window.location.href = url;
+    }
 
- function redirectToReportsIndex() {
-  window.location.href = "./reports/index";
- }
+    function redirectToReportsIndex() {
+        window.location.href = "/reports/index";
+    }
 </script>
+
 
