@@ -1,45 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<h1 id="reportTitle">Report by category</h1>
-
-<div>
-  <canvas id="myChart"></canvas>
-</div>
-
-<style>
-    #categoryTable {
-        background-color: #f2f2f2;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    #categoryTable th, #categoryTable td {
-        border: 1px solid #000;
-        padding: 8px;
-    }
-
-    #categoryTable th {
-        font-weight: bold;
-    }
-</style>
-
-<table id="categoryTable">
-  <thead>
-  <tr>
-    <th>Категорія</th>
-    <th>Сума витрат</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @amount_by_c.each_with_index do |amount, index| %>
-    <tr>
-      <td><%= @categories_by_c[index] %></td>
-      <td><%= amount %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
 <script>
     const ctx = document.getElementById('myChart');
     const data = {
@@ -72,8 +30,23 @@
     const startDate = urlParams.get('startDate');
     const endDate = urlParams.get('endDate');
 
-
     document.title = `Report by category (${startDate} - ${endDate})`;
 
     document.getElementById('reportTitle').innerHTML = `Report by category (${startDate} - ${endDate})`;
+
+    const reportTypeButtons = document.getElementsByName('report_type');
+    const clearButton = document.getElementsByName('clear_button')[0];
+
+    reportTypeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const reportType = this.value;
+            const url = `/${reportType}?startDate=${startDate}&endDate=${endDate}`;
+            window.location.href = url;
+        });
+    });
+
+    clearButton.addEventListener('click', function() {
+        const url = `/reports/index`;
+        window.location.href = url;
+    });
 </script>

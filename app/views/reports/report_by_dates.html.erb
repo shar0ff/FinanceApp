@@ -36,4 +36,11 @@
     document.title = `Report by dates (${startDate} - ${endDate})`;
 
     document.getElementById('reportTitle').innerHTML = `Report by dates (${startDate} - ${endDate})`;
+
+    const clearButton = document.getElementsByName('clear_button')[0];
+
+    clearButton.addEventListener('click', function() {
+        const url = `/reports/index`;
+        window.location.href = url;
+    });
 </script>
